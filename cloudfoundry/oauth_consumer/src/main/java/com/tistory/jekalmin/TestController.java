@@ -1,5 +1,6 @@
 package com.tistory.jekalmin;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -8,7 +9,7 @@ public class TestController {
 
 	@RequestMapping("/")
 	public String index(){
-		return "Hello World!";
+		return "Hello " + SecurityContextHolder.getContext().getAuthentication().getName();
 	}
 	
 }
