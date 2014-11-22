@@ -11,5 +11,5 @@ public class TestController {
 	public String index(){
 		return "Hello " + SecurityContextHolder.getContext().getAuthentication().getName();
 	}
-	
+
 }

@@ -30,8 +30,8 @@
 	</bean>
 	
 	<oauth:rest-template id="restTemplate" resource="resource_detail"/>
-	<oauth:resource id="resource_detail" client-id="app" type="authorization_code"
-		user-authorization-uri="${authorizationUrl}" access-token-uri="${accessTokenUri}"/>
+	<oauth:resource id="resource_detail" client-id="${clientId}" client-secret="${clientSecret}" 
+		type="authorization_code" user-authorization-uri="${authorizationUrl}" 	access-token-uri="${accessTokenUri}"/>
 
 	<security:authentication-manager/>
 
