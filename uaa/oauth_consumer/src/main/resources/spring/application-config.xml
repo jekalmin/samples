@@ -22,16 +22,27 @@
 	<bean id="socialClientFilter" class="org.cloudfoundry.identity.uaa.client.ClientAuthenticationFilter">
 		<constructor-arg value="/login"/>
 		<property name="preAuthenticatedPrincipalSource">
+			<!-- oauth_provider용 -->
 			<bean class="org.cloudfoundry.identity.uaa.client.SocialClientUserDetailsSource">
+			<!-- facebook용 -->
+<!-- 			<bean class="com.tistory.jekalmin.MySocialClientUserDetailsSource"> -->
 				<property name="restTemplate" ref="restTemplate"></property>
 				<property name="userInfoUrl" value="${userInfoUrl}"></property>
 			</bean>
 		</property>
 	</bean>
 	
-	<oauth:rest-template id="restTemplate" resource="resource_detail"/>
-	<oauth:resource id="resource_detail" client-id="${clientId}" client-secret="${clientSecret}" 
+	<oauth:rest-template id="restTemplate" resource="resourceDetails"/>
+	
+	<!-- oauth_provider용 -->
+	<oauth:resource id="resourceDetails" client-id="${clientId}" client-secret="${clientSecret}" 
 		type="authorization_code" user-authorization-uri="${authorizationUrl}" 	access-token-uri="${accessTokenUri}"/>
+
+
+	<!-- facebook용 -->
+<!-- 	<oauth:resource id="resourceDetails" client-id="${clientId}" client-secret="${clientSecret}"  -->
+<!-- 		type="authorization_code" user-authorization-uri="${authorizationUrl}" 	access-token-uri="${accessTokenUri}" -->
+<!-- 		authentication-scheme="form" client-authentication-scheme="form"/> -->
 
 	<security:authentication-manager/>
 
